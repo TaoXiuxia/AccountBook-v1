@@ -2,18 +2,21 @@ package test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import util.JdbcUtils;
+import util.JdbcUtils2;
 
-public class TestDBConnection {
+public class TestMyConnection {
+
 	public static void main(String[] args) throws SQLException {
-		Connection conn = JdbcUtils.getConnection();
-		String sql = "insert  into user values (null,?)";
+		Connection conn = JdbcUtils2.getConnection();
+		
+		String sql = "insert into user values (null,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
+		
 		ps.setString(1, "zhangsan");
-		ps.executeUpdate();
-		JdbcUtils.free(null, ps, conn);
+		int i = ps.executeUpdate();
+		System.out.println(i);
+		JdbcUtils2.free(null, ps, conn);
 	}
 }

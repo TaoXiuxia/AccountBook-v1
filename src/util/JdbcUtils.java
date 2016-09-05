@@ -30,7 +30,6 @@ public final class JdbcUtils {
 	}
 
 	public static Connection getConnection() throws SQLException {
-		// return DriverManager.getConnection(url, user, password);
 		return myDataSource.getConnection(); // 取连接
 	}
 

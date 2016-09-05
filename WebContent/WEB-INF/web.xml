@@ -21,8 +21,24 @@
 		<servlet-name>IncomeServlet</servlet-name>
 		<url-pattern>/income</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ExpenditureServlet</servlet-name>
+		<servlet-class>action.ExpenditureServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExpenditureServlet</servlet-name>
+		<url-pattern>/expenditure</url-pattern>
+	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>BorrowServlet</servlet-name>
+		<servlet-class>action.BorrowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BorrowServlet</servlet-name>
+		<url-pattern>/borrow</url-pattern>
+	</servlet-mapping>
 
 
 

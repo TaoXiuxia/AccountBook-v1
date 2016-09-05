@@ -5,50 +5,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Account Book</title>
 <%@ include file="common/common.jsp" %> 
-<link href="/AccountBook/res/css/inOrOut.css" rel="stylesheet">
-<script src="/AccountBook/res/js/income.js"></script>
-
+<link href="/AccountBook/res/css/borrow.css" rel="stylesheet">
+<script src="/AccountBook/res/js/borrow.js"></script>
 
 </head>
 <body>
 <%@ include file="common/top.jsp"%>
+
 <script language="JavaScript" type="text/JavaScript"> 
 	document.onload = setLeftColumn();
 </script>
+
 <div class="col-xs-10">
-	<div class="add">
-		<label class="add-label">添加收入:</label>
-		<select class="add-select" id="item">
-			<option value="1">asdasd</option>
-			<option value="2">qqq</option>
-			<option value="3">ee</option>
-			<option value="4">www</option>
-			<option value="5">ttt</option>
-		</select>
-		<input class="add-money" placeholder="金额" id="money">
-		<input class="add-money-remark" placeholder="备注" id="remarkForIncome">
-		<button class="add-button" onclick="addMoney()">添加</button>
+	<div>
+		<label class="add-label">借入:</label>
+		<input class="add-money" placeholder="金额">
+		<button class="add-button">添加</button>
 	</div>
 	
-	<div class="addItem">
-		<label class="addItem-label">添加收入项目:</label>
-		<input class="addItem-name" placeholder="项目名称" id="itemName">
-		<input class="addItem-remark" placeholder="备注" id="remarkForItem">
-		<button class="addItem-button" onclick="addItem()">添加</button>
-	</div>	
-		
+	<div class="add">
+		<label class="add-label">借出:</label>
+		<input class="add-money" placeholder="金额">
+		<button class="add-button">添加</button>
+	</div>
+			
 	<div class="total"> 
-		<label class="total-label1">月收入：</label>
+		<label class="total-label1">月借入：</label>
 		<label class="total-money1">3000元</label>
 		
-		<label class="total-label2">日均收入：</label>
+		<label class="total-label2">月借出：</label>
 		<label class="total-money2">300元</label>
 	</div>
+	
+	<div class="selectAndSearch">
+		<select class="select">
+			<option>全部</option>
+			<option>借入</option>
+			<option>借出</option>
+		</select>
 		
-	<div>
+		<input class="searchInput" placeholder="搜索对象">
+		<button class="add-button">搜索</button>
+	</div>
+	
+	<div class="borrowTable">
 		<table class="table table-bordered"> 
 		    <thead> 
 		        <tr> 
