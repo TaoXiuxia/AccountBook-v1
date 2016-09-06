@@ -18,6 +18,7 @@ function addMoney(){
 		"money":money,
 		"remark":remark
 	});
+	location.reload();
 }
 
 function addItem(){
@@ -28,5 +29,6 @@ function addItem(){
 		"itemName":itemName,
 		"remark":remark
 	});
+	location.reload();
 }
 

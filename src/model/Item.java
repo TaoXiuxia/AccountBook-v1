@@ -3,8 +3,8 @@ package model;
 public class Item {
 	int userId;
 	String itemName;
-	int isPublic;
-	int inOrOut;
+	String isPublic;
+	String inOrOut;
 	String remark;
 
 	public int getUserId() {
@@ -23,19 +23,20 @@ public class Item {
 		this.itemName = itemName;
 	}
 
-	public int getIsPublic() {
+
+	public String getIsPublic() {
 		return isPublic;
 	}
 
-	public void setIsPublic(int isPublic) {
+	public void setIsPublic(String isPublic) {
 		this.isPublic = isPublic;
 	}
 
-	public int getInOrOut() {
+	public String getInOrOut() {
 		return inOrOut;
 	}
 
-	public void setInOrOut(int inOrOut) {
+	public void setInOrOut(String inOrOut) {
 		this.inOrOut = inOrOut;
 	}
 
