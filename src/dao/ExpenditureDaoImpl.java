@@ -8,36 +8,35 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import model.Expenditure;
 import model.Income;
 import model.Item;
 import util.JdbcUtils2;
 
-public class IncomeDaoImpl implements IncomeDao {
-
+public class ExpenditureDaoImpl implements ExpenditureDao{
 	/**
-	 * 插入income
-	 * @param income
+	 * 插入Expenditure
+	 * @param Expenditure
 	 */
 	@Override
-	public void addIncome(Income income) {
+	public void addExpenditure(Expenditure expenditure) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
 			conn = JdbcUtils2.getConnection();
-			String sql = "insert into income values (null,?,?,?,?,?)";
+			String sql = "insert into expenditure values (null,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, income.getUserId());
-			ps.setInt(2, income.getItemId());
-			ps.setFloat(3, income.getMoney());
-			ps.setDate(4, new java.sql.Date(income.getDate().getTime()));
-			ps.setString(5, income.getRemark());
+			ps.setInt(1, expenditure.getUserId());
+			ps.setInt(2, expenditure.getItemId());
+			ps.setFloat(3, expenditure.getMoney());
+			ps.setDate(4, new java.sql.Date(expenditure.getDate().getTime()));
+			ps.setString(5, expenditure.getRemark());
 			int isSuccess = ps.executeUpdate();
 			if (1 == isSuccess) {
-				System.out.println("插入Income成功");
+				System.out.println("插入expenditure成功");
 			} else {
-				System.out.println("插入Income失败");
+				System.out.println("插入expenditure失败");
 			}
 			JdbcUtils2.free(null, ps, conn);
 		} catch (SQLException e) {
@@ -46,27 +45,27 @@ public class IncomeDaoImpl implements IncomeDao {
 	}
 
 	/**
-	 * 插入income项
-	 * @param incomeItem
+	 * 插入expenditure项
+	 * @param expenditureItem
 	 */
 	@Override
-	public void addIncomeItem(Item incomeItem) {
+	public void addExpenditureItem(Item expenditureItem) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
 			conn = JdbcUtils2.getConnection();
 			String sql = "insert into item values (null,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, incomeItem.getUserId());
-			ps.setString(2, incomeItem.getItemName());
-			ps.setString(3, incomeItem.getIsPublic());
-			ps.setString(4, incomeItem.getInOrOut());
-			ps.setString(5, incomeItem.getRemark());
+			ps.setInt(1, expenditureItem.getUserId());
+			ps.setString(2, expenditureItem.getItemName());
+			ps.setString(3, expenditureItem.getIsPublic());
+			ps.setString(4, expenditureItem.getInOrOut());
+			ps.setString(5, expenditureItem.getRemark());
 			int isSuccess = ps.executeUpdate();
 			if (1 == isSuccess) {
-				System.out.println("插入IncomeItem成功");
+				System.out.println("插入expenditureItem成功");
 			} else {
-				System.out.println("插入IncomeItem失败");
+				System.out.println("插入expenditureItem失败");
 			}
 			JdbcUtils2.free(null, ps, conn);
 		} catch (SQLException e) {
@@ -75,18 +74,18 @@ public class IncomeDaoImpl implements IncomeDao {
 	}
 
 	/**
-	 * 根据userId获取该用户的收入项（公共的项和自己创建的私有项）
+	 * 根据userId获取该用户的支出项（公共的项和自己创建的私有项）
 	 * @param userId
 	 * @return
 	 */
 	@Override
-	public List<HashMap<String, Object>> getIncomeItemByUserId(int userId) {
+	public List<HashMap<String, Object>> getExpenditureItemByUserId(int userId) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		List<HashMap<String, Object>> items = new ArrayList<HashMap<String,Object>>();
 		try {
 			conn = JdbcUtils2.getConnection();
-			String sql = "SELECT item_id, item_name from item where in_or_out='in' and (user_id=1 or user_id =? ) ORDER BY item_id";
+			String sql = "SELECT item_id, item_name from item where in_or_out='out' and (user_id=1 or user_id =? ) ORDER BY item_id";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, userId);
 			ResultSet rs = ps.executeQuery();
@@ -116,13 +115,13 @@ public class IncomeDaoImpl implements IncomeDao {
 	 * @return
 	 */
 	@Override
-	public List<HashMap<String, Object>> getIncomeByUserId(int userId){
+	public List<HashMap<String, Object>> getExpenditureByUserId(int userId){
 		Connection conn = null;
 		PreparedStatement ps = null;
 		List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
 		try {
 			conn = JdbcUtils2.getConnection();
-			String sql = "SELECT item.item_name, income.money, income.date, income.remark FROM income,item WHERE income.user_id = ? AND income.item_id = item.item_id ORDER BY date DESC";
+			String sql = "SELECT item.item_name, expenditure.money, expenditure.date, expenditure.remark FROM expenditure,item WHERE expenditure.user_id = ? AND expenditure.item_id = item.item_id ORDER BY date DESC";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, userId);
 			ResultSet rs = ps.executeQuery();
@@ -145,25 +144,4 @@ public class IncomeDaoImpl implements IncomeDao {
 		}
 		return list;
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

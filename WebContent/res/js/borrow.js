@@ -1,5 +1,4 @@
 function setLeftColumn(){
-	console.log($("#income").val());
 	$("#income").addClass("left-column-button-inactive");
 	$("#income").addClass("left-column-button-inactive-font");
 	$("#expenditure").addClass("left-column-button-inactive");

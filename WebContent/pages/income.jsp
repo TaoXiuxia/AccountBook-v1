@@ -17,7 +17,6 @@
 <link href="/AccountBook/res/css/inOrOut.css" rel="stylesheet">
 <script src="/AccountBook/res/js/income.js"></script>
 
-
 </head>
 <body>
 <%@ include file="common/top.jsp"%>

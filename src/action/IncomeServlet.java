@@ -51,7 +51,7 @@ public class IncomeServlet extends HttpServlet{
 			Item item =new Item();
 			item.setUserId(2);
 			item.setIsPublic("private");  //后添加的项一定是private的，
-			item.setInOrOut("in"); //收入用0表示
+			item.setInOrOut("in"); //收入用"in"表示
 			item.setItemName(itemName);
 			item.setRemark(remarkForItem);
 			
